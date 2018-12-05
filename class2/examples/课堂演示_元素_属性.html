@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>欢迎学习</title>
+<meta name="description" content="课堂演示">
+<meta name="keywords" content="HTML,CSS,Study">
+<meta name="author" content="liqi">
+<style type="text/css">
+.intro{
+	color:white;
+	font-size:36pt;
+	text-align:center;
+}
+.important{
+	background-color:gray;
+}
+</style>
+</head>
+
+<body>
+	<p id="tips">温馨提示：今日降温</p>
+	<h1 >标题1</h1>
+	<h2>标题2</h2>
+	<h3>标题3</h3>
+	<h4>标题4</h4>
+	<h5>标题5</h5>
+	<h6>标题6</h6>
+	
+	<p>第一个段落。</p>
+	<p>第二个段落。</p>
+	
+	<p>第三个段落。</p>
+	
+	<!-- 我是注释，你看不见我 -->
+	
+	<br/>
+	<br/>
+	<hr>
+	
+	<img src="images/cat.png" width="150" height="100"/>
+	<img src="images/cat.png" width="240" height="160"/>
+	
+	
+	<br/>
+	<a href="https://www.baidu.com">这是一个链接</a>
+	<br/>
+	<a href="#tips">访问今日提示</a>
+	
+	
+	<hr/>
+	<div style="background-color:gray;">
+		<h3 style="color:SkyBlue">蓝色段落</h3>
+	</div>
+	<p class="intro important">TITLE</p>	
+	
+	<h1 id="myHeader">Hello world!</h1>
+	<button onclick="displayResult()">点我</button>
+	
+	<script>
+	function displayResult(){
+		document.getElementById("myHeader").innerHTML="Nice day!";
+	}
+	</script>
+</body>
+</html>

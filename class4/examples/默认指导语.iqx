@@ -1,0 +1,28 @@
+﻿<instruct myinstruct>
+	/fontstyle = ("楷体",3.5%)
+	/txcolor = (0,255,0)
+	/screencolor = (255,255,255)
+	/windowsize = (40%, 30%)
+	/tx
+	/nextkey = (" ")
+	/prevkey = ("F")
+	/nextlabel = ("请按空格键继续")
+	/prevlabel = ("请按F键查看上一页")
+</instruct>
+
+<page insFirst>
+今天我们学习用默认标识符来定义指导语^^这是另外一种定义指导语的方式。
+</page>
+
+<page insSecond>
+这是指导语的第二页。
+</page>
+
+<page endinstruction>
+接下来我们开始实验吧！
+</page>
+
+<expt>
+/preinstructions = (insFirst,insSecond)
+/postinstructions = (endinstruction)
+</expt>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>猫星人实验室</title>
+    <meta name="description" content="course, web, coding">
+    <meta name="author" content="liqi">
+	<!--step 1.2 响应式布局-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!--step 1.1 引入bootstrap的css样式-->
+    <link href="css/bootstrap.css" rel="stylesheet">
+	<!--step 1.2 响应式布局-->
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+	
+	<style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+  </head>
+
+  <body>
+	
+	<!-- step 2 导航栏-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">实验主页</a>
+          <div class="nav-collapse collapse">
+			<!-- step 2.1下拉菜单-->
+            <ul class="nav">
+              <li class="active"><a href="#">实验介绍</a></li>
+              <li><a href="#about">关于我们</a></li>
+              <li><a href="#contact">联系方式</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">更多 <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">位置信息</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">版权声明</a></li>
+                </ul>
+              </li>
+            </ul>
+			<!--end 下拉菜单-->
+			<!-- step 2.2 表单 -->
+            <form class="navbar-form pull-right">
+              <input class="span2" type="text" placeholder="search">
+              <button type="submit" class="btn" >搜索</button>
+            </form>
+			<!-- end 表单-->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- step 3 引入hero-unit组件，作为我们的标题区域 -->
+      <div class="hero-unit" style="background-color:#4F4F4F">
+        <h1 style="color:#F8F8FF">欢迎参加我们的实验</h1>
+        <p style="color:#F5F5F5;margin-top:20px;margin-bottom:20px;">How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather How cold weather </p>
+        <p><a href="http://tool.oschina.net/commons?type=3" class="btn btn-info btn-large">了解更多 &raquo;</a></p>
+      </div>
+	  
+
+      <!-- step 4 设置内容，采用span4,span4,span4的栅格布局 -->
+      <div class="row">
+        <div class="span4">
+          <img src="images/cat1.jpg" style="width:350px;height:350px;">
+        </div>
+        <div class="span4">
+          <div class="span4">
+          <img src="images/cat2.png" style="width:350px;height:350px;">
+		  </div>
+       </div>
+        <div class="span4">
+          <div class="span4">
+          <img src="images/cat3.png" style="width:350px;height:350px;">
+          </div>
+        </div>
+      </div>
+	  <!-- step 4 end-->
+	  
+	  <!-- step 5 设置内容，注意是重新建立一个.row的div区域，并为其设置栅格布局-->
+	  <!-- 此处我为当前div设置了边界距离，采用了内联样式；鼓励大家单独写成css文件，便于管理-->
+      <div class="row" style="margin-top:10px;margin-bottom:100px;">
+        <div class="span4">
+          <h2>实验流程</h2>
+          <p>To complete the test, we advise To complete the test, we advise To complete the test, we adviseTo complete the test, we adviseTo complete the test, we advise se To complete the test, we advise  ete the test, we advise To complete the test, we advise.</p>
+          <p><a class="btn" href="#">更多 &raquo;</a></p>
+        </div>
+        <div class="span4">
+          <h2>知情同意</h2>
+          <p>To complete the test, we advise To complete the test, we advise To complete the test, we adviseTo complete the test, we adviseTo complete the test, we advise se To complete the test, we advise  ete the test, we advise To complete the test, we advise. </p>
+          <p><a class="btn" href="#">更多 &raquo;</a></p>
+       </div>
+        <div class="span4">
+          <h2>联系方式</h2>
+          <p>To complete the test, we advise To complete the test, we advise To complete the test, we adviseTo complete the test, we adviseTo complete the test, we advise se To complete the test, we advise  ete the test, we advise To complete the test, we advise.</p>
+          <p><a class="btn" href="#">更多 &raquo;</a></p>
+        </div>
+      </div>
+	  <!-- step 5 end-->
+      
+	  <!-- step 6 添加一些说明文字-->
+	  <div class="row" style="margin-top:100px;padding:30px;background-color:WhiteSmoke">	  
+	  <dl class="dl-horizontal">
+			<dt>关于实验</dt>
+			<dd>xiehgidheigkdingidjgDonec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo si rta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris cond</dd>
+			<dt>友情感谢</dt>
+			<dd>xiehgidheigkdingidjgDonec id elit non mi porta gravida at eget metus. Fusce dapmentum massa justo si rta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condrta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris cond</dd>
+			<dt>关于实验室</dt>
+			<dd>xiehgidheigkdingidjgDonec id elit non mi porttor mauris condimentum nibh, ut fermentum massa justo si rta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condrta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris cond</dd>
+	  </dl>
+	  </div>
+	  <!-- step 6 end-->
+	  <hr>
+	
+	  <!-- step 7 添加页脚-->
+      <footer>
+        <p>解释权所有@猫星人实验室</p>
+      </footer>
+	  <!-- step 7 end -->
+
+    </div> <!-- /container -->
+
+	<!--step 1.3 引入jquery和bootstrap的js文件 -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+
+  </body>
+</html>
+
+<!--RGB颜色对照表 http://tool.oschina.net/commons?type=3 -->

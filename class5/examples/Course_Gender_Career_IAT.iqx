@@ -1,0 +1,665 @@
+﻿**************************************************************************************************************
+**************************************************************************************************************
+	Implicit Attitude Test (IAT)
+**************************************************************************************************************
+**************************************************************************************************************
+Last Modified:	03-13-2015 by K. Borchert (katjab@millisecond.com) for Millisecond Software
+
+Copyright ©  03-13-2015 Millisecond Software
+**************************************************************************************************************
+**************************************************************************************************************
+	Background Info
+**************************************************************************************************************
+**************************************************************************************************************
+The Implicit Association Task (Greenwald, McGhee, & Schwartz, 1998) is a widely-used cognitive-behavioral paradigm
+that measures the strength of automatic (implicit) associations between concepts in people’s minds relying 
+on latency measures in a simple sorting task.
+ 
+The strength of an association between concepts is measured by the standardized mean difference score of 
+the 'hypothesis-inconsistent' pairings and 'hypothesis-consistent' pairings (d-score) (Greenwald, Nosek, & Banaji, 2003). 
+In general, the higher the d-score the stronger is the association between the 'hypothesis-consistent' pairings 
+(decided by researchers). Negative d-scores suggest a stronger association between the 'hypothesis-inconsistent' pairings.
+
+Inquisit calculates d-scores using the improved scoring algorithm as described in Greenwald et al (2003). 
+Error trials are handled by requiring respondents to correct their responses according to recommendation (p.214).
+
+D-scores obtained with this script:
+Positive d-scores: support a stronger association between 'Females-Family' and 'Males-Careers' than for the opposite pairings
+Negative d-scores: support a stronger association between 'Females-Careers' and 'Males-Family' than for the opposite pairings
+
+References:
+Greenwald, A. G., McGhee, D. E., & Schwartz, J. K. L. (1998). Measuring individual differences in implicit cognition: 
+The Implicit Association Test. Journal of Personality and Social Psychology, 74, 1464-1480.
+
+Greenwald, A. G., Nosek, B. A., & Banaji, M. R. (2003). Understanding and Using the Implicit Association Test: 
+I. An Improved Scoring Algorithm. Journal of Personality and Social Psychology, 85, 197-216.
+**************************************************************************************************************
+**************************************************************************************************************
+	Editable Parameters: EDIT HERE
+	these parameters can be changed easily by each experimenter
+**************************************************************************************************************
+**************************************************************************************************************
+/showsummaryfeedback:				set parameter showsummaryfeedback = true to display summary feedback to participants at the end (default)
+									set parameter showsummaryfeedback = false if no summary feedback should be presented to participants
+<values>
+/showsummaryfeedback = true
+</values>
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+Stimuli: EDIT HERE
+**************************************************************************************************************
+**************************************************************************************************************
+
+<item attributeAlabel>
+/1 = "Family"
+</item>
+
+<item attributeA>
+/1 = "Home"
+/2 = "Parents"
+/3 = "Children"
+/4 = "Family"
+/5 = "Marriage"
+/6 = "Wedding"
+/7 = "Relatives"
+</item>
+
+<item attributeBlabel>
+/1 = "Career"
+</item>
+
+<item attributeB>
+/1 = "Management"
+/2 = "Professional"
+/3 = "Corporation"
+/4 = "Salary"
+/5 = "Office"
+/6 = "Business"
+/7 = "Career"
+</item>
+
+<item targetAlabel>
+/1 = "Female"
+</item>
+
+<item targetA>
+/1 = "Julia"
+/2 = "Michelle"
+/3 = "Anna"
+/4 = "Emily"
+/5 = "Rebecca"
+</item>
+
+<item targetBlabel>
+/1 = "Male"
+</item>
+
+<item targetB>
+/1 = "Ben"
+/2 = "John"
+/3 = "Daniel"
+/4 = "Paul"
+/5 = "Jeffrey"
+</item>
+***********************************************************************
+To change the categories, you need only change the stimulus items and 
+labels immediately above this line. All commands below relate to the 
+IAT procedure, and need only be changed if you wish to modify the 
+generic IAT procedure.
+***********************************************************************
+
+
+
+
+
+**************************************************************************************************************
+**************************************************************************************************************
+    Defaults
+**************************************************************************************************************
+**************************************************************************************************************
+This script requires Inquisit 4.0.0.0 or higher
+
+<defaults>
+/ fontstyle = ("Arial", 3.5%)
+/ screencolor = (0,0,0)
+/ txbgcolor = (0,0,0)
+/ txcolor = (255, 255, 255)
+/ minimumversion = "4.0.0.0"
+/ canvasaspectratio = (4, 3)
+</defaults>
+
+**************************************************************************************************************
+**************************************************************************************************************
+    Scoring
+**************************************************************************************************************
+**************************************************************************************************************
+
+*********************
+automatically updated
+*********************
+/completed:					0 = script was not completed; 1 = script was completed (all conditions run)
+/ sum1a:					tracks the sum of the latencies to correct responses (latencies <= 10000ms) for the first compatible block 1A
+								Note: by design, all final trial responses are correct (regardless of accuracy of initial response)
+/ sum2a:					tracks the sum of the latencies to correct responses (latencies <= 10000ms) for the first incompatible block 2A
+								Note: by design, all final trial responses are correct (regardless of accuracy of initial response) 
+/ sum1b:					tracks the sum of the latencies to correct responses (latencies <= 10000ms) for the second compatible block 1B
+								Note: by design, all final trial responses are correct (regardless of accuracy of initial response)
+/ sum2b:					tracks the sum of the latencies to correct responses (latencies <= 10000ms) for the second incompatible block 2B
+								Note: by design, all final trial responses are correct (regardless of accuracy of initial response) 
+/ n1a:						counts the number of trials in first compatible block 1A (except first one)
+/ n2a:						counts the number of trials in first incompatible block 2A (except first one)
+/ n1b:						counts the number of trials in second compatible block 1B
+/ n2b:						counts the number of trials in second incompatible block 2B
+/ ss1a:						tracks the sum of the squared latencies to correct responses (latencies <= 10000ms) in the first compatible block
+/ ss2a						tracks the sum of the squared latencies to correct responses (latencies <= 10000ms) in the first incompatible block
+/ ss1b:						tracks the sum of the squared latencies to correct responses (latencies <= 10000ms) in the second compatible block 
+/ ss2b:						tracks the sum of the squared latencies to correct responses (latencies <= 10000ms) in the second incompatible block 
+/ magnitude:				stores the magnitude of the implicit preference: "little to no", "a slight", "a moderate", "a strong" (量级)
+/ n_correct:				counts all initial correct responses of all trials that count towards D score (首次答对题目的数量)
+
+<values>
+/ completed = 0
+/ sum1a = 0
+/ sum2a = 0
+/ sum1b = 0
+/ sum2b = 0
+/ n1a = 0
+/ n2a = 0
+/ n1b = 0
+/ n2b = 0
+/ ss1a = 0
+/ ss2a = 0
+/ ss1b = 0
+/ ss2b = 0
+/ magnitude = "unknown"
+/ n_correct = 0
+</values>
+
+* 1 is compatible, 2 is incompatible
+* a is first block, b is second block
+
+/ m1a:					mean latencies of correct responses in first compatible block
+/ m2a:					mean latencies of correct responses in first incompatible block
+/ m1b:					mean latencies of correct responses in second compatible block
+/ m2b:					mean latencies of correct responses in second incompatible block
+/ sd1a:					standard deviation of latencies of correct responses in first compatible block
+/ sd2a					standard deviation of latencies of correct responses in first incompatible block
+/ sd1b:					standard deviation of latencies of correct responses in second compatible block
+/ sd2b:					standard deviation of latencies of correct responses in second incompatible block
+/ sda					standarddeviation of latencies in first block
+/ sdb 					standarddeviation of latencies in second block
+/ da:					D-score for first blocks		
+/ db:					D-score for second blocks
+/ d:					overall D-score
+/ preferred:			stores the preferred target category
+/ notpreferred :		stores the non preferred target category
+/ percentcorrect:       the overall percent correct score of initial responses of test trials of D-score qualifying latencies
+
+
+<expressions>
+/ m1a = values.sum1a / values.n1a
+/ m2a = values.sum2a / values.n2a
+/ m1b = values.sum1b / values.n1b
+/ m2b = values.sum2b / values.n2b
+/ sd1a = sqrt((values.ss1a - (values.n1a * (expressions.m1a * expressions.m1a))) / (values.n1a - 1))
+/ sd2a = sqrt((values.ss2a - (values.n2a * (expressions.m2a * expressions.m2a))) / (values.n2a - 1))
+/ sd1b = sqrt((values.ss1b - (values.n1b * (expressions.m1b * expressions.m1b))) / (values.n1b - 1))
+/ sd2b = sqrt((values.ss2b - (values.n2b * (expressions.m2b * expressions.m2b))) / (values.n2b - 1))
+/ sda = sqrt((((values.n1a - 1) * (expressions.sd1a * expressions.sd1a) + (values.n2a - 1) * (expressions.sd2a * expressions.sd2a)) + ((values.n1a + values.n2a) * ((expressions.m1a - expressions.m2a) * (expressions.m1a - expressions.m2a)) / 4) ) / (values.n1a + values.n2a - 1) )
+/ sdb = sqrt((((values.n1b - 1) * (expressions.sd1b * expressions.sd1b) + (values.n2b - 1) * (expressions.sd2b * expressions.sd2b)) + ((values.n1b + values.n2b) * ((expressions.m1b - expressions.m2b) * (expressions.m1b - expressions.m2b)) / 4) ) / (values.n1b + values.n2b - 1) )
+/ da = (m2a - m1a) / expressions.sda
+/ db = (m2b - m1b) / expressions.sdb
+/ d = (expressions.da + expressions.db) / 2
+/ preferred = "unknown"
+/ notpreferred = "unknown"
+/ percentcorrect = (values.n_correct/ (values.n1a + values.n1b + values.n2a + values.n2b)) * 100
+</expressions>
+
+**************************************************************************************************************
+**************************************************************************************************************
+    Data
+**************************************************************************************************************
+**************************************************************************************************************
+
+****************
+raw data
+****************
+date/time/group/subject:			built in variables that track date and time when script was run with the assigned
+									subject- and group number
+
+									Note: group1/group2 counterbalance the order in which the pairings are run
+
+blockcode:							the name of the current trial
+blocknum:							the number of the current trial
+trialcode:							the name of the current trial
+trialnum:							the number of the current trial
+response:							the final trial response (scancodes of the keys pressed)
+										Note: script saves the final and -by design- correct response
+correct:							the accuracy of the initial response
+										0 = initial response was incorrect and needed to be corrected
+										1 = initial response is correct
+latency:							the latency of the final (correct) response
+stimulusnumber:						the number of the current stimulus
+stimulusitem:						the currently presented item
+expressions.da:						d-score of the first blocks
+expressions.db:						d-score of the second blocks
+expressions.d:						overall d-score
+/ percentcorrect:       			the overall percent correct score of initial responses of test trials of D-score qualifying latencies
+
+
+<data>
+/ file = "GenderCareerIAT_rawdata.iqdat"
+/ columns = [date, time, group, subject, blockcode, blocknum, trialcode, trialnum, response, correct, latency, 
+stimulusnumber, stimulusitem, expressions.da, expressions.db, expressions.d, expressions.percentcorrect ]
+/ separatefiles = true
+</data>
+
+****************
+summary data
+****************
+script.startdate:					date script was run
+script.starttime:					time script was started
+script.subjectid:					subject id number
+script.groupid:						group id number
+script.elapsedtime:					time it took to run script (in ms)
+/completed:							0 = script was not completed; 1 = script was completed (all conditions run)
+
+expressions.da:						d-score of the first blocks
+expressions.db:						d-score of the second blocks
+expressions.d:						overall d-score
+/ percentcorrect:       			the overall percent correct score of initial responses of test trials of D-score qualifying latencies
+
+
+<summarydata >
+/ file = "GenderCareerIAT_summary.iqdat"
+/ columns = [script.startdate, script.starttime, script.subjectid, script.groupid, script.elapsedtime, values.completed,
+expressions.da, expressions.db, expressions.d, expressions.percentcorrect]
+</summarydata>
+
+
+
+***********************************************************************
+Performance summary
+***********************************************************************
+
+<trial summary>
+/ stimulustimes = [0=summary]
+/ validresponse = (" ")
+/ recorddata = false
+/ ontrialbegin = [values.magnitude = "little to no"]
+/ ontrialbegin = [if( abs(expressions.d) > 0.15 ) values.magnitude = "a slight"]
+/ ontrialbegin = [if( abs(expressions.d) > 0.35 ) values.magnitude = "a moderate"]
+/ ontrialbegin = [if( abs(expressions.d) >= 0.65 ) values.magnitude = "a strong"]
+/ ontrialbegin = [if (expressions.d >= 0.0) expressions.preferred = item.targetALabel.1]
+/ ontrialbegin = [if (expressions.d < 0.0) expressions.preferred = item.targetBLabel.1]
+/ ontrialbegin = [if (expressions.d < 0.0) expressions.notpreferred= item.targetALabel.1]
+/ ontrialbegin = [if (expressions.d >= 0.0) expressions.notpreferred= item.targetBLabel.1]
+</trial>
+
+<text summary>
+/ items = ("Your IAT score (D) was <% expressions.d%>, which suggests 
+<%values.magnitude%> association of 
+<%expressions.preferred%> with <%item.attributeAlabel.1%> and <%expressions.notpreferred%> with <%item.attributeBlabel.1%> 
+compared to <%expressions.preferred%> with <%item.attributeBlabel.1%> and <%expressions.notpreferred%> with <%item.attributeAlabel.1%>.
+~n~n~nPress the spacebar to complete this session.") 
+/ size = (60%, 60%)
+/ hjustify = left
+ </text>
+
+***********************************************************************
+Task instruction stimuli
+***********************************************************************
+
+<trial instructions>
+/ stimulustimes = [1=instructions, spacebar]
+/ correctresponse = (" ")
+/ errormessage = false
+/ recorddata = false
+</trial>
+
+****
+依次顺序选择item
+****
+<text instructions>
+/ items = instructions
+/ hjustify = left
+/ size = (90%, 60%)
+/ position = (50%, 85%)
+/ valign = bottom
+/ select = sequence 
+/ resetinterval = 20
+</text>
+
+<item instructions>
+/ 1 = "Put your middle or index fingers on the E and I keys of your keyboard. Words representing the categories at the top will appear one-by-one in the middle of the screen. When the item belongs to a category on the left, press the E key; when the item belongs to a category on the right, press the I key. Items belong to only one category. If you make an error, an X will appear - fix the error by hitting the other key.
+
+This is a timed sorting task. GO AS FAST AS YOU CAN while making as few mistakes as possible. Going too slow or making too many errors will result in an uninterpretable score. This task will take about 5 minutes to complete."
+/ 2 = "See above, the categories have changed. The items for sorting have changed as well. The rules, however, are the same.
+
+When the item belongs to a category on the left, press the E key; when the item belongs to a category on the right, press the I key. Items belong to only one category. An X appears after an error - fix the error by hitting the other key. GO AS FAST AS YOU CAN."
+/ 3 = "See above, the four categories you saw separately now appear together. Remember, each item belongs to only one group. For example, if the categories <%item.targetalabel.item(1)%> and <%item.attributealabel.item(1)%> appear on separate sides above - words meaning <%item.targetalabel.item(1)%> would go in the <%item.targetalabel.item(1)%> category, not the <%item.attributealabel.item(1)%> category.
+
+The green and white labels and items may help to identify the appropriate category. Use the E and I keys to categorize items into four groups left and right, and correct errors by hitting the other key."
+
+/ 4 = "Sort the same four categories again. Remember to go as fast as you can while making as few mistakes as possible.
+
+The green and white labels and items may help to identify the appropriate category. Use the E and I keys to categorize items into the four groups left and right, and correct errors by hitting the other key."
+/ 5 = "Notice above, there are only two categories and they have switched positions. The concept that was previously on the left is now on the right, and the concept that was on the right is now on the left. Practice this new configuration.
+
+Use the E and I keys to catgorize items left and right, and correct errors by hitting the other key."
+/ 6 = "See above, the four categories now appear together in a new configuration. Remember, each item belongs to only one group.
+
+The green and white labels and items may help to identify the appropriate category. Use the E and I keys to categorize items into the four groups left and right, and correct errors by hitting the other key."
+/ 7 = "Sort the same four categories again. Remember to go as fast as you can while making as few mistakes as possible.
+
+The green and white labels and items may help to identify the appropriate category. Use the E and I keys to categorize items into the four groups left and right, and correct errors by hitting the other key."
+</item>
+
+<text spacebar>
+/ items = ("Press the SPACE BAR to begin.")
+/ position = (50%, 95%)
+/ valign = bottom
+</text>
+
+<text attributeA>
+/ items = attributeA
+/ fontstyle = ("Arial", 5%)
+/ txcolor = (0, 255, 0)
+</text>
+
+<text attributeB>
+/ items = attributeB
+/ fontstyle = ("Arial", 5%)
+/ txcolor = (0, 255, 0)
+</text>
+
+<text targetB>
+/ items = targetB
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text targetA>
+/ items = targetA
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text error>
+/ position = (50%, 75%)
+/ items = ("X")
+/ color = (255, 0, 0)
+/ fontstyle = ("Arial", 10%, true)
+</text>
+
+<text attributeAleft>
+/ items = attributeAlabel
+/ valign = top
+/ halign = left
+/ position = (5%, 5%)
+/ txcolor = (0, 255, 0)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text attributeBright>
+/ items = attributeBlabel
+/ valign = top
+/ halign = right
+/ position = (95%, 5%)
+/ txcolor = (0, 255, 0)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text attributeAleftmixed>
+/ items = attributeAlabel
+/ valign = top
+/ halign = left
+/ position = (5%, 19%)
+/ txcolor = (0, 255, 0)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text attributeBrightmixed>
+/ items = attributeBlabel
+/ valign = top
+/ halign = right
+/ position = (95%, 19%)
+/ txcolor = (0, 255, 0)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text targetBleft>
+/ items = targetBlabel
+/ valign = top
+/ halign = left	
+/ position = (5%, 5%)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text targetBright>
+/ items = targetBlabel
+/ valign = top
+/ halign = right
+/ position = (95%, 5%)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text targetAleft>
+/ items = targetAlabel
+/ valign = top
+/ halign = left
+/ position = (5%, 5%)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text targetAright>
+/ items = targetAlabel
+/ valign = top
+/ halign = right
+/ position = (95%, 5%)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text orleft>
+/ items = ("or")
+/ valign = top
+/ halign = left
+/ position = (5%, 12%)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+<text orright>
+/ items = ("or")
+/ valign = top
+/ halign = right
+/ position = (95%, 12%)
+/ fontstyle = ("Arial", 5%)
+</text>
+
+***********************************************************************
+Trials
+***********************************************************************
+
+<trial attributeA>
+/ validresponse = ("E", "I")
+/ correctresponse = ("E")
+/ stimulusframes = [1 = attributeA]
+/ posttrialpause = 250
+</trial>
+
+<trial attributeB>
+/ validresponse = ("E", "I")
+/ correctresponse = ("I")
+/ stimulusframes = [1 = attributeB]
+/ posttrialpause = 250
+</trial>
+
+
+<trial targetBleft>
+/ validresponse = ("E", "I")
+/ correctresponse = ("E")
+/ stimulusframes = [1 = targetB]
+/ posttrialpause = 250
+</trial>
+
+<trial targetBright>
+/ validresponse = ("E", "I")
+/ correctresponse = ("I")
+/ stimulusframes = [1 = targetB]
+/ posttrialpause = 250
+</trial>
+
+<trial targetAleft>
+/ validresponse = ("E", "I")
+/ correctresponse = ("E")
+/ stimulusframes = [1 = targetA]
+/ posttrialpause = 250
+</trial>
+
+<trial targetAright>
+/ validresponse = ("E", "I")
+/ correctresponse = ("I")
+/ stimulusframes = [1 = targetA]
+/ posttrialpause = 250
+</trial>
+
+***********************************************************************
+Blocks
+***********************************************************************
+
+<block attributepractice>
+/ bgstim = (attributeAleft, attributeBright)
+/ trials = [1=instructions;2-21 = random(attributeA, attributeB)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+</block>
+
+<block targetcompatiblepractice>
+/ bgstim = (targetAleft, targetBright)
+/ trials = [1=instructions;2-21 = random(targetAleft, targetBright)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+</block>
+
+<block targetincompatiblepractice>
+/ bgstim = (targetAright, targetBleft)
+/ trials = [1=instructions;2-21 = random(targetAright, targetBleft)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+</block>
+
+
+
+<block compatibletest1>
+/ bgstim = (targetAleft, orleft, attributeAleftmixed, targetBright, orright, attributeBrightmixed)
+/ trials = [1=instructions;
+  3,5,7,9,11,13,15,17,19,21= random(targetAleft, targetBright);
+  2,4,6,8,10,12,14,16,18,20 = random(attributeA, attributeB)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+/ ontrialend = [if(block.compatibletest1.latency  <= 10000 && block.compatibletest1.currenttrialnumber != 1 ) values.sum1a =  values.sum1a + block.compatibletest1.latency]
+/ ontrialend = [if(block.compatibletest1.latency  <= 10000 && block.compatibletest1.currenttrialnumber != 1 ) values.n1a +=  1]
+/ ontrialend = [if(block.compatibletest1.latency  <= 10000 && block.compatibletest1.currenttrialnumber != 1 ) values.ss1a =  values.ss1a + (block.compatibletest1.latency * block.compatibletest1.latency)]
+/ ontrialend = [if(block.compatibletest1.latency  <= 10000 && block.compatibletest1.currenttrialnumber != 1 ) values.n_correct += block.compatibletest1.correct]
+</block>
+
+<block compatibletest2>
+/ bgstim = (targetAleft, orleft, attributeAleftmixed, targetBright, orright, attributeBrightmixed)
+/ trials = [
+  2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40 = random(targetAleft, targetBright);
+  1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39 = random(attributeA, attributeB)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+/ ontrialend = [if(block.compatibletest2.latency  <= 10000) values.sum1b =  values.sum1b + block.compatibletest2.latency]
+/ ontrialend = [if(block.compatibletest2.latency  <= 10000) values.n1b += 1]
+/ ontrialend = [if(block.compatibletest2.latency  <= 10000) values.ss1b =  values.ss1b + (block.compatibletest2.latency * block.compatibletest2.latency)]
+/ ontrialend = [if(block.compatibletest2.latency  <= 10000) values.n_correct += block.compatibletest2.correct]
+</block>
+
+<block incompatibletest1>
+/ bgstim = (targetBleft, orleft, attributeAleftmixed, targetAright, orright, attributeBrightmixed)
+/ trials = [1=instructions;
+  3,5,7,9,11,13,15,17,19,21 = random(targetBleft, targetAright);
+  2,4,6,8,10,12,14,16,18,20 = random(attributeA, attributeB)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+/ ontrialend = [if(block.incompatibletest1.latency  <= 10000 && block.incompatibletest1.currenttrialnumber != 1) values.sum2a =  values.sum2a + block.incompatibletest1.latency]
+/ ontrialend = [if(block.incompatibletest1.latency  <= 10000 && block.incompatibletest1.currenttrialnumber != 1 ) values.n2a +=  1]
+/ ontrialend = [if(block.incompatibletest1.latency  <= 10000 && block.incompatibletest1.currenttrialnumber != 1 ) values.ss2a =  values.ss2a + (block.incompatibletest1.latency * block.incompatibletest1.latency)]
+/ ontrialend = [if(block.incompatibletest1.latency  <= 10000 && block.incompatibletest1.currenttrialnumber != 1 ) values.n_correct += block.incompatibletest1.correct]
+</block>
+
+<block incompatibletest2>
+/ bgstim = (targetBleft, orleft, attributeAleftmixed, targetAright, orright, attributeBrightmixed)
+/ trials = [
+  2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40 = random(targetBleft, targetAright);
+  1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39 = random(attributeA, attributeB)]
+/ errormessage = true(error,200)
+/ responsemode = correct
+/ ontrialend = [if(block.incompatibletest2.latency  <= 10000) values.sum2b =  values.sum2b + block.incompatibletest2.latency]
+/ ontrialend = [if(block.incompatibletest2.latency  <= 10000) values.n2b +=  1]
+/ ontrialend = [if(block.incompatibletest2.latency  <= 10000) values.ss2b =  values.ss2b + (block.incompatibletest2.latency * block.incompatibletest2.latency)]
+/ ontrialend = [if(block.incompatibletest2.latency  <= 10000) values.n_correct += block.incompatibletest2.correct]
+</block>
+
+
+<block compatibletestinstructions>
+/ bgstim = (targetAleft, orleft, attributeAleftmixed, targetBright, orright, attributeBrightmixed)
+/ trials = [1=instructions]
+/ recorddata = false
+</block>
+
+<block incompatibletestinstructions>
+/ bgstim = (targetBleft, orleft, attributeAleftmixed, targetAright, orright, attributeBrightmixed)
+/ trials = [1=instructions]
+/ recorddata = false
+</block>
+
+<block summary>
+/skip = [values.showsummaryfeedback == false]
+/ trials = [1=summary]
+/ recorddata = false
+</block>
+
+***********************************************************************
+Experiment
+***********************************************************************
+Groupassignment is done by groupnumber
+
+<expt>
+/subjects = (1 of 2)
+/groupassignment = groupnumber
+/ blocks = [1=targetcompatiblepractice; 2=attributepractice; 3=compatibletest1; 4=compatibletestinstructions;
+				5=compatibletest2; 6=targetincompatiblepractice; 7=incompatibletest1; 8=incompatibletestinstructions;
+				9=incompatibletest2; 10=summary]
+/onexptend = [values.completed = 1]
+</expt>
+
+<expt>
+/subjects = (2 of 2)
+/groupassignment = groupnumber
+/ blocks = [1=targetincompatiblepractice; 2=attributepractice; 3=incompatibletest1; 4=incompatibletestinstructions;
+				5=incompatibletest2; 6=targetcompatiblepractice; 7=compatibletest1; 8=compatibletestinstructions; 
+				9=compatibletest2; 10=summary]
+/onexptend = [values.completed = 1]
+</expt>
+
+***********************************************************************
+Test Monkey
+***********************************************************************
+<monkey>
+/ latencydistribution = normal(500, 100)
+/ percentcorrect = 90
+</monkey>
+
+
+
+
+
+
+
+
+
+
+
+

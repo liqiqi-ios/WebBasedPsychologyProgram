@@ -1,0 +1,283 @@
+﻿//在这个部分，我们先把事先定义好的图片用item的方式写进表达式中，因为涉及的内容太多，我们可以用python代码来事先打印的功能，直接
+//打印成我们想要的格式，在以后写程序的过程中，也可以结合python和inquisit，结果inquisit非常笨的问题。
+====================================================================================================================
+<item NR>
+    /1 = "N0.bmp"
+    /2 = "N105.bmp"
+    /3 = "N120.bmp"
+    /4 = "N135.bmp"
+    /5 = "N15.bmp"
+    /6 = "N150.bmp"
+    /7 = "N165.bmp"
+    /8 = "N180.bmp"
+    /9 = "N195.bmp"
+    /10 = "N210.bmp"
+    /11 = "N225.bmp"
+    /12 = "N240.bmp"
+    /13 = "N255.bmp"
+    /14 = "N270.bmp"
+    /15 = "N285.bmp"
+    /16 = "N30.bmp"
+    /17 = "N300.bmp"
+    /18 = "N315.bmp"
+    /19 = "N330.bmp"
+    /20 = "N345.bmp"
+    /21 = "N45.bmp"
+    /22 = "N60.bmp"
+    /23 = "N75.bmp"
+    /24 = "N90.bmp"
+</item>
+
+
+<item MR>
+    /1 = "M0.bmp"
+    /2 = "M105.bmp"
+    /3 = "M120.bmp"
+    /4 = "M135.bmp"
+    /5 = "M15.bmp"
+    /6 = "M150.bmp"
+    /7 = "M165.bmp"
+    /8 = "M180.bmp"
+    /9 = "M195.bmp"
+    /10 = "M210.bmp"
+    /11 = "M225.bmp"
+    /12 = "M240.bmp"
+    /13 = "M255.bmp"
+    /14 = "M270.bmp"
+    /15 = "M285.bmp"
+    /16 = "M30.bmp"
+    /17 = "M300.bmp"
+    /18 = "M315.bmp"
+    /19 = "M330.bmp"
+    /20 = "M345.bmp"
+    /21 = "M45.bmp"
+    /22 = "M60.bmp"
+    /23 = "M75.bmp"
+    /24 = "M90.bmp"
+</item>
+
+<instruct myinstruct>
+	/nextkey = (" ")
+	/fontstyle = ("楷体", 3%, false, false, false, false, 5, 1)
+	/txcolor = (0,0,0)
+	/screencolor = (255,255,255)
+	/lastlabel = "请按空格键继续"
+	/windowsize = (1000,800)
+</instruct>
+
+
+<page begininstruction1>^^^^您好，非常欢迎您参与我们的研究！^^我们当前的研究是测验您进行心理旋转的能力。^^请您尽量准确快速的对我们呈现的刺激材料进行反应！^^</page>
+
+<page begininstruction2>^^^^请您将左手和右手的食指分别放在键盘的“F”键和“J”键上；^^在屏幕的中央会出现旋转一定角度的或正或反的大谢字母“R”，请判断其正反.^^如果是正的大写“R”，请按“F”键；^^如果是反的大写“R”，请按“J”键。</page>
+
+<page begininstruction2R>^^^^请您将左手和右手的食指分别放在键盘的“F”键和“J”键上；^^在屏幕的中央会出现旋转一定角度的或正或反的大谢字母“R”，请判断其正反.^^如果是正的大写“R”，请按“J”键；^^如果是反的大写“R”，请按“F”键。</page>
+
+<page endinstruction1>^^^^请您稍微休息一下!^^如果您休息好了，准备进入下一阶段的实验，请您按空格键！^^</page>
+
+<page endinstruction2>^^^^非常感谢您的参与，您提供的行为数据对我们的研究特别重要!^^为表达感谢，请您找主试领取被试费！^^再次感谢您的参与！^^</page>
+
+<item fixation>
+	/1 = "+"
+</item>
+
+<item correctmsg>
+	/1 = "√"
+</item>
+
+<item errormsg>
+	/1 = "×"
+</item>
+
+====================================================================================================================
+//接下来我们就需要用图片刺激的定义方式定义我们的刺激材料啦！我们要定义两类刺激，一类是呈现正常的R，一类是定义镜像过的R
+
+<picture NR>
+	/erase = True(0,0,0) 
+	/halign = center
+	/items = NR
+	/size = (600,600)
+</picture>
+
+<picture MR>
+	/erase = True(0,0,0)
+	/halign = center
+	/items = MR
+	/size = (600,600)
+</picture>
+
+<shape blank>
+	/erase = True(0,0,0)
+	/color = (black)
+	/size = (600,600)
+    /shape = rectangle
+</shape>
+
+<text fixation>
+	/items = fixation
+	/select = 1
+	/fontstyle = ("Arial", 80ptc)
+	/txbgcolor = (0,0,0)
+	/txcolor = (255,255,255)
+</text>
+
+<text correctmsg>
+	/items = correctmsg
+	/select = 1
+	/fontstyle = ("楷体", 60ptc, false, false, false, false, 5, 1)
+	/txcolor = (255,255,255)
+	/txbgcolor = (0, 0, 0)
+</text>
+
+<text errormsg>
+	/items = errormsg
+	/select = 1
+	/fontstyle = ("楷体", 60ptc, false, false, false, false, 5, 1)
+	/txcolor = (255,255,255)
+	/txbgcolor = (0, 0, 0)
+</text>
+
+
+//定义values & expressions，让我们的注视点呈现时间任性起来。
+==========================================================================================================================================
+
+<values>
+	/fixationtime = 0
+	/shapetime = 0
+	/stimulustimep = 0
+</values>
+
+<expressions>
+	/generaterandomfixation = ceil(rand(400,600))
+	/generaterandomshape = ceil(rand(100,150))
+</expressions>
+
+
+
+//定义trials，我们需要定义两类trial，一个是正常R的trial，一个是镜像R的trial
+===========================================================================================================================================
+
+<trial NR1>
+	/pretrialpause = 500
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/validresponse = ("F","J")
+	/correctresponse = ("F")
+	/ontrialbegin = [values.fixationtime = expressions.generaterandomfixation]
+	/ontrialbegin = [values.shapetime = values.fixationtime + expressions.generaterandomshape]
+	/ontrialbegin = [values.stimulustimep = values.shapetime + 200]
+	/ontrialbegin = [trial.NR1.insertstimulustime(text.fixation, 0)]
+	/ontrialbegin = [trial.NR1.insertstimulustime(shape.blank,values.fixationtime)]
+	/ontrialbegin = [trial.NR1.insertstimulustime(picture.NR,values.shapetime)]
+	/ontrialbegin = [trial.NR1.insertstimulustime(shape.blank,values.stimulustimep)]
+	/ontrialend = [trial.NR1.clearstimulusframes()]
+</trial>
+
+<trial MR1>
+	/pretrialpause = 500
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/validresponse = ("F","J")
+	/correctresponse = ("J")
+	/ontrialbegin = [values.fixationtime = expressions.generaterandomfixation]
+	/ontrialbegin = [values.shapetime = values.fixationtime + expressions.generaterandomshape]
+	/ontrialbegin = [values.stimulustimep = values.shapetime + 200]
+	/ontrialbegin = [trial.MR1.insertstimulustime(text.fixation, 0)]
+	/ontrialbegin = [trial.MR1.insertstimulustime(shape.blank,values.fixationtime)]
+	/ontrialbegin = [trial.MR1.insertstimulustime(picture.MR,values.shapetime)]
+	/ontrialbegin = [trial.MR1.insertstimulustime(shape.blank,values.stimulustimep)]
+	/ontrialend = [trial.NR1.clearstimulusframes()]
+</trial>
+
+<trial NR2>
+	/pretrialpause = 500
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/validresponse = ("F","J")
+	/correctresponse = ("J")
+	/ontrialbegin = [values.fixationtime = expressions.generaterandomfixation]
+	/ontrialbegin = [values.shapetime = values.fixationtime + expressions.generaterandomshape]
+	/ontrialbegin = [values.stimulustimep = values.shapetime + 200]
+	/ontrialbegin = [trial.NR2.insertstimulustime(text.fixation, 0)]
+	/ontrialbegin = [trial.NR2.insertstimulustime(shape.blank,values.fixationtime)]
+	/ontrialbegin = [trial.NR2.insertstimulustime(picture.NR,values.shapetime)]
+	/ontrialbegin = [trial.NR2.insertstimulustime(shape.blank,values.stimulustimep)]
+	/ontrialend = [trial.NR2.clearstimulusframes()]
+</trial>
+
+<trial MR2>
+	/pretrialpause = 500
+	/correctmessage = (correctmsg,500)
+	/errormessage = (errormsg,500)
+	/validresponse = ("F","J")
+	/correctresponse = ("F")
+	/ontrialbegin = [values.fixationtime = expressions.generaterandomfixation]
+	/ontrialbegin = [values.shapetime = values.fixationtime + expressions.generaterandomshape]
+	/ontrialbegin = [values.stimulustimep = values.shapetime + 200]
+	/ontrialbegin = [trial.MR2.insertstimulustime(text.fixation, 0)]
+	/ontrialbegin = [trial.MR2.insertstimulustime(shape.blank,values.fixationtime)]
+	/ontrialbegin = [trial.MR2.insertstimulustime(picture.MR,values.shapetime)]
+	/ontrialbegin = [trial.MR2.insertstimulustime(shape.blank,values.stimulustimep)]
+	/ontrialend = [trial.NR2.clearstimulusframes()]
+</trial>
+
+//定义blocks,我们在这里定义三个block，一个是instruction，一个是练习block，一个是正式实验的block。
+=============================================================================================================================================================
+
+<block startblock1>
+	/screencolor = (255,255,255)
+	/preinstructions = (begininstruction2)
+</block>
+
+<block startblock2>
+	/screencolor = (255,255,255)
+	/preinstructions = (begininstruction2R)
+</block>
+
+<block exerciseblk1>
+	/screencolor = (0,0,0)
+	/blockfeedback = (meanlatency,correct)
+	/trials = [1-10 = noreplacenorepeat(NR1,MR1)]
+</block>
+
+<block exerciseblk2>
+	/screencolor = (0,0,0)
+	/blockfeedback = (meanlatency,correct)
+	/trials = [1-10 = noreplacenorepeat(NR2,MR2)]
+</block>
+
+<block restblock>
+	/screencolor = (255,255,255)
+	/postinstructions = (endinstruction1)
+</block>
+
+<block judgeblk1>
+	/screencolor = (0,0,0)
+	/blockfeedback = (meanlatency,correct)
+	/trials = [1-48 = noreplacenorepeat(NR1,MR1)]
+</block>
+
+<block judgeblk2>
+	/screencolor = (0,0,0)
+	/blockfeedback = (meanlatency,correct)
+	/trials = [1-48 = noreplacenorepeat(NR2,MR2)]
+</block>
+
+//定义experiment, 加入blocks
+======================================================================================================================================================================
+<expt>
+	/preinstructions = (begininstruction1)
+	/subjects = (1 of 2)
+	/ blocks = [1 = startblock1; 2=exerciseblk1; 3 = restblock; 4 = startblock1; 5 = judgeblk1]
+	/postinstructions = (endinstruction2)
+</expt>
+
+<expt>
+	/preinstructions = (begininstruction1)
+	/subjects = (2 of 2)
+	/ blocks = [1 = startblock2; 2=exerciseblk2; 3 = restblock; 4 = startblock2; 5 = judgeblk2]
+	/postinstructions = (endinstruction2)
+</expt>
+
+
+
+

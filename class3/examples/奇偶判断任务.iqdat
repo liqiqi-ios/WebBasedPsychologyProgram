@@ -1,0 +1,17 @@
+date	time	group	subject	build	blocknum	trialnum	blockcode	trialcode	pretrialpause	posttrialpause	windowcenter	trialduration	trialtimeout	blocktimeout	response	correct	latency	inwindow	stimulusnumber1	stimulusitem1	stimulusvpos1	stimulushpos1	stimulusonset1	stimulusnumber2	stimulusitem2	stimulusvpos2	stimulushpos2	stimulusonset2
+122918	11:46:57	1	1	4.0.10.0	2	1	oddevenblk	oddnumbertrial	500	0	0	0	0	0	33	1	1244	0	3	5	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	2	oddevenblk	oddnumbertrial	500	0	0	0	0	0	36	0	330	0	4	7	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	3	oddevenblk	oddnumbertrial	500	0	0	0	0	0	33	1	318	0	1	1	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	4	oddevenblk	oddnumbertrial	500	0	0	0	0	0	36	0	175	0	2	3	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	5	oddevenblk	oddnumbertrial	500	0	0	0	0	0	33	1	537	0	2	3	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	6	oddevenblk	evennumbertrial	500	0	0	0	0	0	33	0	1960	0	2	4	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	7	oddevenblk	evennumbertrial	500	0	0	0	0	0	36	1	252	0	1	2	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	8	oddevenblk	evennumbertrial	500	0	0	0	0	0	36	1	77	0	3	6	50pct	50pct	0	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	9	oddevenblk	evennumbertrial	500	0	0	0	0	0	36	1	78	0	4	8	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	10	oddevenblk	oddnumbertrial	500	0	0	0	0	0	36	0	30	0	4	7	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	11	oddevenblk	evennumbertrial	500	0	0	0	0	0	33	0	97	0	2	4	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	12	oddevenblk	evennumbertrial	500	0	0	0	0	0	36	1	138	0	3	6	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	13	oddevenblk	oddnumbertrial	500	0	0	0	0	0	33	1	80	0	1	1	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	14	oddevenblk	evennumbertrial	500	0	0	0	0	0	36	1	112	0	4	8	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	15	oddevenblk	oddnumbertrial	500	0	0	0	0	0	33	1	16	0	3	5	50pct	50pct	1	0	0	0	0	0
+122918	11:46:57	1	1	4.0.10.0	2	16	oddevenblk	evennumbertrial	500	0	0	0	0	0	36	1	99	0	1	2	50pct	50pct	0	0	0	0	0	0
